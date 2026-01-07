@@ -126,13 +126,13 @@ const Database: React.FC<DatabaseProps> = ({ actions, setActions }) => {
           <input 
             type="text" 
             placeholder="Buscar atividade ou responsável..." 
-            className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ynov-blue/20 text-sm bg-white"
+            className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ynov-blue/20 text-sm bg-white text-gray-900"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
         <select 
-            className="px-3 py-2 border border-gray-200 rounded-lg bg-white text-xs focus:outline-none"
+            className="px-3 py-2 border border-gray-200 rounded-lg bg-white text-xs text-gray-900 focus:outline-none"
             value={selectedGT}
             onChange={(e) => setSelectedGT(e.target.value)}
         >
@@ -140,7 +140,7 @@ const Database: React.FC<DatabaseProps> = ({ actions, setActions }) => {
             {GT_OPTIONS.map(gt => <option key={gt} value={gt}>{gt}</option>)}
         </select>
         <select 
-            className="px-3 py-2 border border-gray-200 rounded-lg bg-white text-xs focus:outline-none"
+            className="px-3 py-2 border border-gray-200 rounded-lg bg-white text-xs text-gray-900 focus:outline-none"
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
         >
@@ -149,7 +149,7 @@ const Database: React.FC<DatabaseProps> = ({ actions, setActions }) => {
         </select>
         <div className="flex gap-2">
             <select 
-                className="flex-1 px-3 py-2 border border-gray-200 rounded-lg bg-white text-xs focus:outline-none"
+                className="flex-1 px-3 py-2 border border-gray-200 rounded-lg bg-white text-xs text-gray-900 focus:outline-none"
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
             >
@@ -260,14 +260,14 @@ const Database: React.FC<DatabaseProps> = ({ actions, setActions }) => {
                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
                     <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Título da Atividade</label>
-                    <input required type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-ynov-blue/20 outline-none bg-white" 
+                    <input required type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 focus:ring-2 focus:ring-ynov-blue/20 outline-none bg-white" 
                         placeholder="Ex: Workshop Agro Digital"
                         value={formData.activity} onChange={e => setFormData({...formData, activity: e.target.value})} />
                   </div>
                   
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">GT Responsável</label>
-                     <select className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <select className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.gt} onChange={e => setFormData({...formData, gt: e.target.value as GTType})}>
                        {GT_OPTIONS.map(gt => <option key={gt} value={gt}>{gt}</option>)}
                      </select>
@@ -275,7 +275,7 @@ const Database: React.FC<DatabaseProps> = ({ actions, setActions }) => {
                   
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Tipo de Atividade</label>
-                     <select className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <select className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.activityType} onChange={e => setFormData({...formData, activityType: e.target.value as ActivityType})}>
                        {ACTIVITY_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                      </select>
@@ -283,19 +283,19 @@ const Database: React.FC<DatabaseProps> = ({ actions, setActions }) => {
 
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Data de Início</label>
-                     <input required type="date" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <input required type="date" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.date} onChange={e => setFormData({...formData, date: e.target.value})} />
                   </div>
                   
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Data de Conclusão (Opcional)</label>
-                     <input type="date" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <input type="date" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.endDate} onChange={e => setFormData({...formData, endDate: e.target.value})} />
                   </div>
 
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Status</label>
-                     <select className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <select className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.status} onChange={e => setFormData({...formData, status: e.target.value as StatusType})}>
                        {STATUS_OPTIONS.map(s => <option key={s} value={s}>{s}</option>)}
                      </select>
@@ -303,7 +303,7 @@ const Database: React.FC<DatabaseProps> = ({ actions, setActions }) => {
 
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Hélice Principal</label>
-                     <select className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <select className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.helix} onChange={e => setFormData({...formData, helix: e.target.value as HelixType})}>
                        {HELIX_OPTIONS.map(h => <option key={h} value={h}>{h}</option>)}
                      </select>
@@ -311,46 +311,46 @@ const Database: React.FC<DatabaseProps> = ({ actions, setActions }) => {
 
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Responsável (Entidade/Nome)</label>
-                     <input required type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <input required type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.responsible} onChange={e => setFormData({...formData, responsible: e.target.value})} />
                   </div>
                   
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Local da Atividade</label>
-                     <input type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <input type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                         placeholder="Ex: IFSUL, Auditório ACIC"
                        value={formData.location} onChange={e => setFormData({...formData, location: e.target.value})} />
                   </div>
 
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Pessoas Envolvidas (Direto)</label>
-                     <input type="number" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <input type="number" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.peopleInvolved} onChange={e => setFormData({...formData, peopleInvolved: parseInt(e.target.value) || 0})} />
                   </div>
                   
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Impacto (Indireto/Est.)</label>
-                     <input type="number" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <input type="number" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.impactIndirect} onChange={e => setFormData({...formData, impactIndirect: parseInt(e.target.value) || 0})} />
                   </div>
 
                   <div className="md:col-span-2">
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Descrição / Resumo</label>
-                     <textarea className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none resize-none bg-white" rows={3}
+                     <textarea className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none resize-none bg-white" rows={3}
                         placeholder="Descreva brevemente a iniciativa..."
                         value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})}></textarea>
                   </div>
 
                   <div className="md:col-span-2">
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Resultados / Entregas</label>
-                     <textarea className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none resize-none bg-white" rows={2}
+                     <textarea className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none resize-none bg-white" rows={2}
                         placeholder="Quais foram os principais marcos ou produtos entregues?"
                         value={formData.results} onChange={e => setFormData({...formData, results: e.target.value})}></textarea>
                   </div>
                </div>
                
                <div className="pt-4 flex gap-4">
-                  <button type="button" onClick={closeForm} className="flex-1 px-4 py-3 border border-gray-200 rounded-xl font-bold text-gray-500 hover:bg-gray-50 transition-colors bg-white">
+                  <button type="button" onClick={closeForm} className="flex-1 px-4 py-3 border border-gray-200 rounded-xl font-bold text-gray-500 hover:bg-gray-50 transition-colors bg-white text-gray-900">
                     Cancelar
                   </button>
                   <button type="submit" className="flex-[2] bg-ynov-blue text-white py-3 rounded-xl font-bold hover:bg-blue-800 transition-all shadow-lg shadow-blue-900/10">

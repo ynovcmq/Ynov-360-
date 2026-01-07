@@ -156,14 +156,14 @@ const Actors: React.FC<ActorsProps> = ({ actors, setActors, setActiveTab }) => {
             <input 
                 type="text" 
                 placeholder="Buscar por nome, e-mail, entidade..." 
-                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ynov-blue/20 text-sm bg-white"
+                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ynov-blue/20 text-sm bg-white text-gray-900"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
             </div>
             <div className="flex flex-wrap gap-2 w-full md:w-auto">
                 <select 
-                    className="flex-1 min-w-[140px] px-3 py-2 border border-gray-200 rounded-lg bg-white text-xs focus:outline-none"
+                    className="flex-1 min-w-[140px] px-3 py-2 border border-gray-200 rounded-lg bg-white text-xs text-gray-900 focus:outline-none"
                     value={selectedHelix}
                     onChange={(e) => setSelectedHelix(e.target.value)}
                 >
@@ -171,7 +171,7 @@ const Actors: React.FC<ActorsProps> = ({ actors, setActors, setActiveTab }) => {
                     {HELIX_OPTIONS.map(h => <option key={h} value={h}>{h}</option>)}
                 </select>
                 <select 
-                    className="flex-1 min-w-[140px] px-3 py-2 border border-gray-200 rounded-lg bg-white text-xs focus:outline-none"
+                    className="flex-1 min-w-[140px] px-3 py-2 border border-gray-200 rounded-lg bg-white text-xs text-gray-900 focus:outline-none"
                     value={selectedGT}
                     onChange={(e) => setSelectedGT(e.target.value)}
                 >
@@ -179,7 +179,7 @@ const Actors: React.FC<ActorsProps> = ({ actors, setActors, setActiveTab }) => {
                     {GT_OPTIONS.map(gt => <option key={gt} value={gt}>{gt}</option>)}
                 </select>
                 <select 
-                    className="flex-1 min-w-[140px] px-3 py-2 border border-gray-200 rounded-lg bg-white text-xs focus:outline-none"
+                    className="flex-1 min-w-[140px] px-3 py-2 border border-gray-200 rounded-lg bg-white text-xs text-gray-900 focus:outline-none"
                     value={selectedEntity}
                     onChange={(e) => setSelectedEntity(e.target.value)}
                 >
@@ -304,13 +304,13 @@ const Actors: React.FC<ActorsProps> = ({ actors, setActors, setActiveTab }) => {
                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
                     <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Nome Completo</label>
-                    <input required type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-ynov-blue/20 outline-none bg-white" 
+                    <input required type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 focus:ring-2 focus:ring-ynov-blue/20 outline-none bg-white" 
                         value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
                   </div>
                   
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Hélice Representada</label>
-                     <select className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <select className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.helix} onChange={e => setFormData({...formData, helix: e.target.value as HelixType})}>
                        <option value="Governo">Governo</option>
                        <option value="Empresa">Empresas</option>
@@ -321,7 +321,7 @@ const Actors: React.FC<ActorsProps> = ({ actors, setActors, setActiveTab }) => {
 
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">GT de Atuação</label>
-                     <select className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <select className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.gt} onChange={e => setFormData({...formData, gt: e.target.value as GTType})}>
                        {GT_OPTIONS.map(gt => <option key={gt} value={gt}>{gt}</option>)}
                      </select>
@@ -329,51 +329,51 @@ const Actors: React.FC<ActorsProps> = ({ actors, setActors, setActiveTab }) => {
 
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Telefone / WhatsApp</label>
-                     <input required type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <input required type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                         placeholder="(00) 00000-0000"
                        value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
                   </div>
 
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">E-mail</label>
-                     <input required type="email" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <input required type="email" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
                   </div>
 
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Entidade / Empresa</label>
-                     <input required type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <input required type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.organization} onChange={e => setFormData({...formData, organization: e.target.value})} />
                   </div>
                   
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Cargo ou Função</label>
-                     <input type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <input type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.role} onChange={e => setFormData({...formData, role: e.target.value})} />
                   </div>
 
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Data de Nascimento</label>
-                     <input type="date" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <input type="date" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.birthDate} onChange={e => setFormData({...formData, birthDate: e.target.value})} />
                   </div>
 
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Redes Sociais (URL)</label>
-                     <input type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <input type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                         placeholder="Ex: https://instagram.com/usuario"
                        value={formData.socialLinks} onChange={e => setFormData({...formData, socialLinks: e.target.value})} />
                   </div>
 
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Endereço</label>
-                     <input type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <input type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})} />
                   </div>
                   
                   <div>
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Cidade / UF</label>
-                     <input type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none bg-white"
+                     <input type="text" className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none bg-white"
                        value={formData.city} onChange={e => setFormData({...formData, city: e.target.value})} />
                   </div>
 
@@ -399,7 +399,7 @@ const Actors: React.FC<ActorsProps> = ({ actors, setActors, setActiveTab }) => {
 
                   <div className="md:col-span-2">
                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Observações Internas</label>
-                     <textarea className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm outline-none resize-none bg-white" rows={3}
+                     <textarea className="w-full border-gray-200 border rounded-lg px-3 py-2.5 text-sm text-gray-900 outline-none resize-none bg-white" rows={3}
                         value={formData.notes} onChange={e => setFormData({...formData, notes: e.target.value})}></textarea>
                   </div>
                </div>

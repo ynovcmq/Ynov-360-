@@ -226,61 +226,61 @@ const WorkingGroups: React.FC<WorkingGroupsProps> = ({ actions, setActions }) =>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div className="md:col-span-2">
                                 <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Título da Atividade</label>
-                                <input required name="activity" type="text" defaultValue={editingCard?.activity} className="w-full border rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-ynov-blue/20 outline-none bg-white" placeholder="Ex: Hackathon 2025" />
+                                <input required name="activity" type="text" defaultValue={editingCard?.activity} className="w-full border rounded-lg p-2.5 text-sm text-gray-900 focus:ring-2 focus:ring-ynov-blue/20 outline-none bg-white" placeholder="Ex: Hackathon 2025" />
                             </div>
 
                             <div>
                                 <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Responsável</label>
-                                <input required name="responsible" type="text" defaultValue={editingCard?.responsible} className="w-full border rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-ynov-blue/20 outline-none bg-white" placeholder="Nome ou Instituição" />
+                                <input required name="responsible" type="text" defaultValue={editingCard?.responsible} className="w-full border rounded-lg p-2.5 text-sm text-gray-900 focus:ring-2 focus:ring-ynov-blue/20 outline-none bg-white" placeholder="Nome ou Instituição" />
                             </div>
 
                             <div>
                                 <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Público Alvo</label>
-                                <input name="targetAudience" type="text" defaultValue={editingCard?.targetAudience} className="w-full border rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-ynov-blue/20 outline-none bg-white" placeholder="Ex: Estudantes, Lojistas" />
+                                <input name="targetAudience" type="text" defaultValue={editingCard?.targetAudience} className="w-full border rounded-lg p-2.5 text-sm text-gray-900 focus:ring-2 focus:ring-ynov-blue/20 outline-none bg-white" placeholder="Ex: Estudantes, Lojistas" />
                             </div>
 
                             <div className="md:col-span-2">
                                 <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Descrição</label>
-                                <textarea name="description" rows={3} defaultValue={editingCard?.description} className="w-full border rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-ynov-blue/20 outline-none resize-none bg-white" placeholder="Detalhes da iniciativa..."></textarea>
+                                <textarea name="description" rows={3} defaultValue={editingCard?.description} className="w-full border rounded-lg p-2.5 text-sm text-gray-900 focus:ring-2 focus:ring-ynov-blue/20 outline-none resize-none bg-white" placeholder="Detalhes da iniciativa..."></textarea>
                             </div>
 
                             <div>
                                 <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Data de Início</label>
-                                <input required name="date" type="date" defaultValue={editingCard?.date || new Date().toISOString().split('T')[0]} className="w-full border rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-ynov-blue/20 outline-none bg-white" />
+                                <input required name="date" type="date" defaultValue={editingCard?.date || new Date().toISOString().split('T')[0]} className="w-full border rounded-lg p-2.5 text-sm text-gray-900 focus:ring-2 focus:ring-ynov-blue/20 outline-none bg-white" />
                             </div>
 
                             <div>
                                 <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Previsão Conclusão</label>
-                                <input name="endDate" type="date" defaultValue={editingCard?.endDate} className="w-full border rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-ynov-blue/20 outline-none bg-white" />
+                                <input name="endDate" type="date" defaultValue={editingCard?.endDate} className="w-full border rounded-lg p-2.5 text-sm text-gray-900 focus:ring-2 focus:ring-ynov-blue/20 outline-none bg-white" />
                             </div>
 
                             <div>
                                 <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Status</label>
-                                <select name="status" defaultValue={editingCard?.status || 'Planejada'} className="w-full border rounded-lg p-2.5 text-sm bg-white outline-none">
+                                <select name="status" defaultValue={editingCard?.status || 'Planejada'} className="w-full border rounded-lg p-2.5 text-sm text-gray-900 bg-white outline-none">
                                     {STATUS_OPTIONS.map(s => <option key={s} value={s}>{s}</option>)}
                                 </select>
                             </div>
 
                             <div>
                                 <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Hélice Relacionada</label>
-                                <select name="helix" defaultValue={editingCard?.helix || 'Sociedade'} className="w-full border rounded-lg p-2.5 text-sm bg-white outline-none">
+                                <select name="helix" defaultValue={editingCard?.helix || 'Sociedade'} className="w-full border rounded-lg p-2.5 text-sm text-gray-900 bg-white outline-none">
                                     {HELIX_OPTIONS.map(h => <option key={h} value={h}>{h}</option>)}
                                 </select>
                             </div>
 
                             <div>
                                 <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Impacto (Pessoas)</label>
-                                <input name="peopleInvolved" type="number" defaultValue={editingCard?.peopleInvolved || 0} className="w-full border rounded-lg p-2.5 text-sm outline-none bg-white" />
+                                <input name="peopleInvolved" type="number" defaultValue={editingCard?.peopleInvolved || 0} className="w-full border rounded-lg p-2.5 text-sm text-gray-900 outline-none bg-white" />
                             </div>
                             
                             <div className="md:col-span-2">
                                 <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Observações</label>
-                                <input name="comments" type="text" defaultValue={editingCard?.comments} className="w-full border rounded-lg p-2.5 text-sm outline-none bg-white" placeholder="Notas internas..." />
+                                <input name="comments" type="text" defaultValue={editingCard?.comments} className="w-full border rounded-lg p-2.5 text-sm text-gray-900 outline-none bg-white" placeholder="Notas internas..." />
                             </div>
                         </div>
 
                         <div className="pt-4 flex gap-3">
-                            <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 px-4 py-3 rounded-xl border border-gray-200 font-bold text-gray-500 hover:bg-gray-50 bg-white">
+                            <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 px-4 py-3 rounded-xl border border-gray-200 font-bold text-gray-500 hover:bg-gray-50 bg-white text-gray-900">
                                 Cancelar
                             </button>
                             <button type="submit" className="flex-2 bg-ynov-blue text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-800 transition-all shadow-lg">
