@@ -1,5 +1,12 @@
 
-/* Estilos globais para o Dashboard YNOV */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #F4F4F4;
+}
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
@@ -17,7 +24,7 @@
   border-radius: 9999px;
 }
 
-/* Animações nativas caso o Tailwind falhe */
+/* Animações customizadas */
 .animate-fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
