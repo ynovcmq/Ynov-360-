@@ -14,7 +14,8 @@ interface OverviewProps {
 
 const PDF_BASE64 = "data:application/pdf;base64,JVBERi0xLjcKCjEgMCBvYmogICUgZW50cnkgcG9pbnQKPDwKICAvVHlwZSAvQ2F0YWxvZwogIC9QYWdlcyAyIDAgUgo+PgplbmRvYmoKCjIgMCBvYmoKPDwKICAvVHlwZSAvUGFnZXMKICAvTWVkaWFCb3ggWyAwIDAgNTk1LjI4IDg0MS44OSBdCiAgL0NvdW50IDEKICAvS2lkcyBbIDMgMCBSIF0KPj4KZW5kb2JqCgozIDAgb2JqCjw8CiAgL1R5cGUgL1BhZ2UKICAvUGFyZW50IDIgMCBSC4gIC9SZXNvdXJjZXMgPDwKICAgIC9Gb250IDw8CiAgICAgIC9FMSA0IDAgUgogICAgPj4KICA+PgogIC9Db250ZW50cyA1IDAgUgo+PgplbmRvYmoKCjQgMCBvYmoKPDwKICAvVHlwZSAvRm9udAogIC9TdWJ0eXBlIC9UeXBlMQogIC9CYXNlRm9udCAvSGVsdmV0aWNhCj4+CmVuZG9iagoKNSAwIG9iago8PAogIC9MZW5ndGggMjIzCj4+CnN0cmVhbQpCVAovRTEgMjQgVGYKNjAgNzUwIFRECihZTk9WIC0gTW92aW1lbnRvIHBlbGEgSW5vdmFjYW8gZGUgQ2FtYXF1YSkgVGoKRVQKQlQKL0UxIDEyIFRmCjYwIDcwMCBVEQooRXN0ZSBlLSB1bSBhcnF1aXZvIFBERiBkZSBleGVtcGxvIHBhcmEgbyBEYXNoYm9hcmQgWU5PVi4pIFRqCkVUCkJUCi9FMSIDEyIFRmCjYwIDY4AgVEQooFN1YnN0aXR1YSBlc3RlIGFyZ3Vpdm8gcGVsbyBQaXRjaCBEZWNrIHJlYWwgbm8gY29kaWdvLikgVGoKRVQKZW5kc3RyZWFtCmVuZG9iagoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDEwIDAwMDAwIG4gCjAwMDAwMDAwNjAgMDAwMDAgbiAKMDAwMDAwMDE1NyAwMDAwMCBuIAowMDAwMDAwMjY5IDAwMDAwIG4gCjAwMDAwMDAzNTYgMDAwMDAgbiAKdHJhaWxlcgo8PAogIC9TaXplIDYKICAvUm9vdCAxIDAgUgo+PgpzdGFydHhyZWYKNjMwCiUlRU9GCg==";
 
-const YNOV_BANNER_IMG = "https://storage.googleapis.com/download/storage/v1/b/app-assets/o/file_0000000058bc71f5ab41d2bbc99cab81?alt=media";
+// Nova imagem do banner baseada no anexo do usuário
+const YNOV_BANNER_IMG = "https://storage.googleapis.com/download/storage/v1/b/app-assets/o/file_00000000f07df59cc15e5108502f9011?alt=media";
 
 const TOUR_STEPS = [
   {
@@ -130,14 +131,14 @@ const Overview: React.FC<OverviewProps> = ({ actions, setActiveTab }) => {
 
   return (
     <div className="space-y-8 animate-fade-in pb-12">
-      {/* RESTORED: Professional Hero Section with Interactive Tour Button */}
-      <div className="relative rounded-[24px] overflow-hidden shadow-2xl bg-ynov-blue min-h-[400px] flex items-center justify-center">
+      {/* Banner Principal com a nova imagem 'Inovar é Verbo Coletivo' */}
+      <div className="relative rounded-[24px] overflow-hidden shadow-2xl bg-[#080808] min-h-[450px] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           {!imageError ? (
             <img 
               src={YNOV_BANNER_IMG} 
-              alt="YNOV Banner" 
-              className="w-full h-full object-cover opacity-60"
+              alt="YNOV - Inovar é Verbo Coletivo" 
+              className="w-full h-full object-cover opacity-80"
               onError={() => setImageError(true)}
             />
           ) : (
@@ -145,25 +146,26 @@ const Overview: React.FC<OverviewProps> = ({ actions, setActiveTab }) => {
                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-ynov-blue via-ynov-blue/40 to-transparent"></div>
+          {/* Overlay suave para garantir leitura dos botões de ação */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>
         </div>
 
         <div className="relative z-10 p-8 md:p-16 text-center md:text-left w-full flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-ynov-yellow/20 text-ynov-yellow px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6 backdrop-blur-md border border-ynov-yellow/30">
+            <div className="inline-flex items-center gap-2 bg-ynov-blue/40 text-ynov-yellow px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6 backdrop-blur-md border border-ynov-yellow/30">
               <Zap size={14} />
               Camaquã 2030
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-[1.1]">
-              Movimento pela <span className="text-ynov-yellow">Inovação</span> de Camaquã
+              A inteligência do nosso <span className="text-ynov-yellow">Ecossistema</span>
             </h1>
-            <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-xl leading-relaxed">
-              Conectando governo, empresas, academia e sociedade civil para transformar o futuro da nossa região.
+            <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-xl leading-relaxed font-medium">
+              Acompanhe metas, projetos e conexões da Quádrupla Hélice em tempo real. Juntos, transformamos o futuro de Camaquã.
             </p>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               <button 
                 onClick={() => setIsTourOpen(true)}
-                className="bg-[#0047AB] hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 transition-all shadow-xl active:scale-95"
+                className="bg-ynov-blue hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 transition-all shadow-xl active:scale-95 border border-white/10"
               >
                 <Gamepad2 size={20} />
                 Tour Interativo YNOV
@@ -172,24 +174,16 @@ const Overview: React.FC<OverviewProps> = ({ actions, setActiveTab }) => {
                 onClick={() => setActiveTab('impacts')}
                 className="bg-white text-ynov-blue px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-ynov-yellow hover:text-ynov-blue transition-all shadow-xl active:scale-95"
               >
-                Explorar Ecossistema
+                Dashboard Estratégico
                 <ArrowRight size={20} />
               </button>
-              <a 
-                href={PDF_BASE64}
-                download="YNOV_Pitch_Deck.pdf"
-                className="bg-white/10 text-white border border-white/20 backdrop-blur-md px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-white/20 transition-all active:scale-95"
-              >
-                <Rocket size={20} />
-                Pitch Deck
-              </a>
             </div>
           </div>
 
           <div className="hidden lg:flex flex-col gap-4">
-             <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center">
+             <div className="bg-black/40 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center">
                 <Instagram size={32} className="mx-auto text-ynov-yellow mb-2" />
-                <p className="text-xs text-blue-200 mb-3">Siga no Instagram</p>
+                <p className="text-xs text-blue-100 mb-3">Acompanhe o movimento</p>
                 <a 
                   href="https://www.instagram.com/ynovcamaqua/" 
                   target="_blank" 
@@ -203,7 +197,7 @@ const Overview: React.FC<OverviewProps> = ({ actions, setActiveTab }) => {
         </div>
       </div>
 
-      {/* Stats Quick View Cards */}
+      {/* Restante dos componentes (Stats, Hélices, Timeline, Modais) permanece igual */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-ynov-blue/30 transition-colors">
             <div className="flex items-center gap-4">
@@ -240,7 +234,6 @@ const Overview: React.FC<OverviewProps> = ({ actions, setActiveTab }) => {
         </div>
       </div>
 
-      {/* Quádrupla Hélice Selector Section */}
       <div className="space-y-6">
         <div className="flex justify-between items-center px-1">
             <h3 className="text-2xl font-bold text-gray-800">A Quádrupla Hélice</h3>
@@ -272,7 +265,6 @@ const Overview: React.FC<OverviewProps> = ({ actions, setActiveTab }) => {
         </div>
       </div>
 
-      {/* Historical Journey Timeline */}
       <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
         <h3 className="text-2xl font-bold text-gray-800 mb-8">Nossa Jornada</h3>
         <div className="relative">
@@ -297,7 +289,6 @@ const Overview: React.FC<OverviewProps> = ({ actions, setActiveTab }) => {
         </div>
       </div>
 
-      {/* Interactive Tour Modal */}
       {isTourOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
           <div className="bg-[#0b0b0b] text-[#f1f1f1] rounded-[14px] shadow-2xl w-full max-w-[70%] overflow-hidden border border-white/10 animate-scale-up">
@@ -356,7 +347,6 @@ const Overview: React.FC<OverviewProps> = ({ actions, setActiveTab }) => {
         </div>
       )}
 
-      {/* Helix Detail Modal */}
       {activeHelixModal && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
             <div className="bg-white rounded-[24px] shadow-2xl w-full max-w-lg overflow-hidden animate-scale-up">

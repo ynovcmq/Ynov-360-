@@ -1,9 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { GT_OPTIONS, STATUS_OPTIONS, HELIX_OPTIONS, ACTIVITY_TYPES } from '../constants';
 import { ActionItem, GTType, StatusType, HelixType, ActivityType } from '../types';
-// Add Target to the import list from lucide-react
-import { Search, Plus, Download, Edit2, Trash2, MapPin, Users, FileSpreadsheet, X, Calendar, ClipboardCheck, Target } from 'lucide-react';
+import { 
+  Search, Plus, Download, Edit2, Trash2, Users, 
+  FileSpreadsheet, X, Calendar, ClipboardCheck, Target, 
+  Upload, FileJson, Save
+} from 'lucide-react';
 
 interface DatabaseProps {
   actions: ActionItem[];
@@ -17,6 +20,7 @@ const Database: React.FC<DatabaseProps> = ({ actions, setActions }) => {
   const [selectedType, setSelectedType] = useState<string>('all');
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const initialFormState: Partial<ActionItem> = {
     gt: 'Educação',
@@ -79,12 +83,51 @@ const Database: React.FC<DatabaseProps> = ({ actions, setActions }) => {
     setFormData(initialFormState);
   };
 
+  // Exportar para JSON (Backup Completo)
+  const exportBackupJSON = () => {
+    const dataStr = JSON.stringify(actions, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+    
+    const exportFileDefaultName = `ynov_backup_${new Date().toISOString().split('T')[0]}.json`;
+    
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+  };
+
+  // Importar de JSON
+  const handleImportJSON = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const json = JSON.parse(event.target?.result as string);
+        if (Array.isArray(json)) {
+          if (confirm(`Deseja importar ${json.length} registros? Isso substituirá os dados atuais que não foram salvos.`)) {
+            setActions(json);
+            alert("Backup restaurado com sucesso!");
+          }
+        } else {
+          alert("Arquivo JSON inválido.");
+        }
+      } catch (err) {
+        alert("Erro ao ler o arquivo de backup.");
+      }
+    };
+    reader.readAsText(file);
+    // Limpar o input para permitir re-upload do mesmo arquivo se necessário
+    e.target.value = '';
+  };
+
   const exportCSV = () => {
     const headers = ["Título", "GT", "Tipo", "Status", "Início", "Fim", "Responsável", "Direto", "Indireto", "Local", "Resultados"];
     const rows = filteredActions.map(a => [
-      a.activity, a.gt, a.activityType, a.status, a.date, a.endDate || '', a.responsible, a.peopleInvolved, a.impactIndirect, a.location, a.results || ''
+      `"${a.activity}"`, `"${a.gt}"`, `"${a.activityType}"`, `"${a.status}"`, a.date, a.endDate || '', `"${a.responsible}"`, a.peopleInvolved, a.impactIndirect, `"${a.location}"`, `"${a.results || ''}"`
     ]);
-    const csvContent = "data:text/csv;charset=utf-8," + [headers, ...rows].map(e => e.join(",")).join("\n");
+    const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + [headers, ...rows].map(e => e.join(",")).join("\n");
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
@@ -104,10 +147,29 @@ const Database: React.FC<DatabaseProps> = ({ actions, setActions }) => {
           </h2>
           <p className="text-gray-500 text-sm">Registro centralizado e gestão de entregas.</p>
         </div>
-        <div className="flex gap-2">
-            <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors shadow-sm text-sm">
-                <FileSpreadsheet size={18} />
-                Importar
+        <div className="flex flex-wrap gap-2">
+            <input 
+              type="file" 
+              ref={fileInputRef} 
+              className="hidden" 
+              accept=".json" 
+              onChange={handleImportJSON} 
+            />
+            <button 
+                onClick={() => fileInputRef.current?.click()}
+                className="bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 px-3 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors shadow-sm text-xs"
+                title="Restaurar dados de um arquivo JSON"
+            >
+                <Upload size={16} />
+                Restaurar Backup
+            </button>
+            <button 
+                onClick={exportBackupJSON}
+                className="bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 px-3 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors shadow-sm text-xs"
+                title="Salvar todos os dados em um arquivo JSON"
+            >
+                <Save size={16} />
+                Salvar Backup
             </button>
             <button 
                 onClick={() => setIsFormOpen(true)}
@@ -159,9 +221,9 @@ const Database: React.FC<DatabaseProps> = ({ actions, setActions }) => {
             <button 
                 onClick={exportCSV}
                 className="p-2 text-gray-500 hover:text-ynov-blue border border-gray-200 rounded-lg bg-white" 
-                title="Exportar CSV"
+                title="Exportar para Excel/CSV"
             >
-                <Download size={18} />
+                <FileSpreadsheet size={18} />
             </button>
         </div>
       </div>
